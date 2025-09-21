@@ -192,7 +192,7 @@ window.addEventListener('scroll', function() {
     const heroText = document.querySelector('.hero-text h1');
     const originalText = heroText.innerHTML;
     const nameText = "Raymond";
-    const professions = ["Frontend Developer", "UI/UX Designer", "Photographer"];
+   const professions = ["Horticulture Specialist", "Water Management Professional", "Agricultural Operations Manager"];
     let professionIndex = 0;
     
     function animateProfession() {
@@ -209,3 +209,21 @@ window.addEventListener('scroll', function() {
     // Start profession animation
     setInterval(animateProfession, 3000);
 });
+
+// ...existing code...
+// Animate skill bars on page load
+const skillProgressBars = document.querySelectorAll('.skill-progress');
+skillProgressBars.forEach(bar => {
+    const width = bar.getAttribute('data-width');
+    bar.style.width = width;
+});
+// download cv
+function downloadCV() {
+    // Create a temporary anchor element
+    const link = document.createElement('a');
+    link.href = 'assets/downloads/raymondcv.pdf'; // Replace with actual path to your CV
+    link.download = 'Raymond-CV.pdf'; // The filename for the downloaded file
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}

@@ -35,7 +35,14 @@ body {
 /* Sidebar Navigation */
 .sidebar {
     width: 250px;
-    background-color: var(--primary);
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+        url("assets/images/sidebar.jpeg");
+    background-size: cover;        /* image covers whole sidebar */
+    background-position: center;   /* always centered */
+    background-repeat: no-repeat;
+    background-attachment: fixed;  /* 🔥 parallax effect */
+
     padding: 30px 20px;
     display: flex;
     flex-direction: column;
@@ -45,6 +52,7 @@ body {
     z-index: 100;
     transition: var(--transition);
 }
+
 
 .profile-mobile {
     display: none;
@@ -66,6 +74,7 @@ body {
     padding: 10px 15px;
     border-radius: 5px;
     transition: var(--transition);
+    background-color: var(--white);
 }
 
 .nav-link:hover, .nav-link.active {
@@ -105,25 +114,21 @@ body {
 }
 
 .section {
-    display: block; /* All sections visible */
-    padding: 80px 50px;
-    min-height: 100vh;
+    display: block;
+    padding: 60px 40px;   /* reduced top/bottom padding */
+    min-height: auto;     /* let section size depend on content */
     opacity: 1;
     visibility: visible;
 }
 
-.section.active {
-    display: block;
-}
-
 .section-header {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;  /* reduced spacing below headers */
 }
 
 .section-header h2 {
     font-size: 2.5rem;
-    margin-bottom: 10px;
+    margin-bottom: 8px;   /* slightly smaller gap under title */
     color: var(--black);
 }
 
@@ -138,7 +143,7 @@ body {
     align-items: center;
     justify-content: space-between;
     height: 100vh;
-    padding: 0 50px;
+   
 }
 
 .hero-text {
@@ -166,7 +171,7 @@ body {
 .hero-image img {
     width: 400px;
     height: 400px;
-    border-radius: 50%;
+    border-radius: 20px;
     object-fit: cover;
     border: 5px solid var(--primary);
     transition: var(--transition);
@@ -195,6 +200,24 @@ body {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
+.btn-secondary {
+    background-color: var(--black);
+    color: var(--primary);
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-secondary.btn-secondary:hover {
+    background-color: var(--primary);
+    color: var(--black);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
 
 /* About Section */
 .about-intro {
@@ -207,7 +230,7 @@ body {
 .about-image img {
     width: 200px;
     height: 200px;
-    border-radius: 50%;
+    border-radius: 20px;
     object-fit: cover;
     border: 3px solid var(--primary);
 }
@@ -388,6 +411,38 @@ body {
 .graduation-image img:hover {
     transform: scale(1.03);
 }
+
+.experience-image {
+    margin: 15px 0;
+}
+
+.experience-image img {
+    width: 100%;
+    border-radius: 5px;
+    transition: var(--transition);
+}
+
+.experience-image img:hover {
+    transform: scale(1.03);
+}
+
+/* Skill Bar Styles */
+.skill-bar {
+    background: #eee;
+    border-radius: 5px;
+    height: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.skill-progress {
+    background: var(--primary);
+    height: 100%;
+    border-radius: 5px;
+    width: 0;
+    transition: width 1s ease;
+}
 /* Portfolio Section */
 .portfolio-filters {
     display: flex;
@@ -497,7 +552,7 @@ body {
 }
 
 .testimonial-card::before {
-    content: ''';
+    content: '';
     position: absolute;
     top: -20px;
     left: -20px;
@@ -701,11 +756,36 @@ body {
 }
 
 /* Responsive Styles */
-@media (max-width: 1200px) {
+    @media (min-width: 1600px)  {
+        
     .hero-text h1 {
         font-size: 3rem;
     }
+     .sidebar {
+        transform: translateX(-100%);
+        width: 280px;
+        
+    }
     
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    .profile-mobile {
+        display: block;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    .profile-mobile img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--primary);
+    }
+    .main-content {
+        margin-left: 0;
+    }
     .services-grid,
     .facts-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -720,6 +800,7 @@ body {
     .sidebar {
         transform: translateX(-100%);
         width: 280px;
+        
     }
     
     .sidebar.active {
@@ -745,7 +826,7 @@ body {
         height: 150px;
         border-radius: 50%;
         object-fit: cover;
-        border: 3px solid var(--black);
+        border: 3px solid var(--primary);
     }
     
     .hero {
